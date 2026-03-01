@@ -142,6 +142,12 @@ function PacCanGame() {
     setDirection(newDirection);
   };
 
+  const handleDirectionPress = (dx, dy) => {
+    const newDirection = { x: dx, y: dy };
+    if (newDirection.x === direction.x && newDirection.y === direction.y) return;
+    setDirection(newDirection);
+  };
+
   useEffect(() => {
     if (gameStarted) {
       window.addEventListener("keydown", handleKeyPress);
@@ -156,8 +162,10 @@ function PacCanGame() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        minHeight: "100vh",
         height: "100vh",
         backgroundColor: "#f0f0f0",
+        position: "relative",
         zoom: { xs: 0.75, md: 1 },
       }}
     >
@@ -335,6 +343,96 @@ function PacCanGame() {
               </Box>
             </Box>
           )}
+        </Box>
+      )}
+
+      {/* Mobile D-pad: only on small screens when game is active */}
+      {gameStarted && !gameOver && !gameWon && (
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            position: "fixed",
+            bottom: 24,
+            left: "50%",
+            transform: "translateX(-50%)",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 0,
+            zIndex: 20,
+            touchAction: "manipulation",
+          }}
+        >
+          <Button
+            onTouchStart={(e) => {
+              e.preventDefault();
+              handleDirectionPress(0, -1);
+            }}
+            onClick={() => handleDirectionPress(0, -1)}
+            sx={{
+              minWidth: 56,
+              height: 48,
+              borderRadius: "8px 8px 0 0",
+              backgroundColor: "rgba(0,0,0,0.75)",
+              color: "#fff",
+              "&:active": { backgroundColor: "rgba(0,0,0,0.9)" },
+            }}
+          >
+            ▲
+          </Button>
+          <Box sx={{ display: "flex", gap: 0 }}>
+            <Button
+              onTouchStart={(e) => {
+                e.preventDefault();
+                handleDirectionPress(-1, 0);
+              }}
+              onClick={() => handleDirectionPress(-1, 0)}
+              sx={{
+                minWidth: 56,
+                height: 48,
+                borderRadius: 0,
+                backgroundColor: "rgba(0,0,0,0.75)",
+                color: "#fff",
+                "&:active": { backgroundColor: "rgba(0,0,0,0.9)" },
+              }}
+            >
+              ◀
+            </Button>
+            <Box sx={{ width: 56, height: 48 }} />
+            <Button
+              onTouchStart={(e) => {
+                e.preventDefault();
+                handleDirectionPress(1, 0);
+              }}
+              onClick={() => handleDirectionPress(1, 0)}
+              sx={{
+                minWidth: 56,
+                height: 48,
+                borderRadius: 0,
+                backgroundColor: "rgba(0,0,0,0.75)",
+                color: "#fff",
+                "&:active": { backgroundColor: "rgba(0,0,0,0.9)" },
+              }}
+            >
+              ▶
+            </Button>
+          </Box>
+          <Button
+            onTouchStart={(e) => {
+              e.preventDefault();
+              handleDirectionPress(0, 1);
+            }}
+            onClick={() => handleDirectionPress(0, 1)}
+            sx={{
+              minWidth: 56,
+              height: 48,
+              borderRadius: "0 0 8px 8px",
+              backgroundColor: "rgba(0,0,0,0.75)",
+              color: "#fff",
+              "&:active": { backgroundColor: "rgba(0,0,0,0.9)" },
+            }}
+          >
+            ▼
+          </Button>
         </Box>
       )}
     </Box>
