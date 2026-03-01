@@ -46,7 +46,7 @@ const LeftBanner = () => {
             <span
               className="bannerIcon"
               onClick={() => {
-                window.open("https://www.youtube.com/@blackcanaryYT", "_blank");
+                window.open("https://www.youtube.com/@cancanarycan", "_blank");
               }}
             >
               <FaYoutube />
@@ -62,7 +62,7 @@ const LeftBanner = () => {
             <span
               className="bannerIcon"
               onClick={() => {
-                window.open("https://www.instagram.com/lilcanary", "_blank");
+                window.open("https://www.instagram.com/cancanarycan", "_blank");
               }}
             >
               <FaInstagram />
@@ -78,7 +78,7 @@ const LeftBanner = () => {
             <span
               className="bannerIcon"
               onClick={() => {
-                window.open("https://www.x.com/blackcanaryYT", "_blank");
+                window.open("https://www.x.com/cancanarycan", "_blank");
               }}
             >
               <FaTwitter />
