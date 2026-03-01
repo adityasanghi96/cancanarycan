@@ -1,3 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
+# Update the Sitemap URL below if your site uses a different domain.
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://cancanarycan.com/sitemap.xml

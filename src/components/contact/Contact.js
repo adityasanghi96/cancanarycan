@@ -90,12 +90,13 @@ const Contact = () => {
               method="POST"
               target="google-form-iframe"
               style={{ display: "none" }}
+              aria-hidden="true"
             >
-              <input name={ENTRY_IDS.name} type="text" />
-              <input name={ENTRY_IDS.phone} type="text" />
-              <input name={ENTRY_IDS.email} type="text" />
-              <input name={ENTRY_IDS.subject} type="text" />
-              <input name={ENTRY_IDS.message} type="text" />
+              <input name={ENTRY_IDS.name} type="text" aria-label="Your name" />
+              <input name={ENTRY_IDS.phone} type="text" aria-label="Phone number" />
+              <input name={ENTRY_IDS.email} type="text" aria-label="Email" />
+              <input name={ENTRY_IDS.subject} type="text" aria-label="Subject" />
+              <input name={ENTRY_IDS.message} type="text" aria-label="Message" />
             </form>
             <iframe
               ref={hiddenIframeRef}
@@ -103,7 +104,10 @@ const Contact = () => {
               title="Form submission"
               style={{ position: "absolute", width: 0, height: 0, border: 0 }}
             />
-            <form className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5">
+            <form
+              className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5"
+              onSubmit={handleSend}
+            >
               {errMsg && (
                 <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
                   {errMsg}
@@ -116,10 +120,11 @@ const Contact = () => {
               )}
               <div className="w-full flex flex-col lgl:flex-row gap-10">
                 <div className="w-full lgl:w-1/2 flex flex-col gap-4">
-                  <p className="text-sm text-gray-400 uppercase tracking-wide">
+                  <label htmlFor="contact-name" className="text-sm text-gray-400 uppercase tracking-wide">
                     Your name
-                  </p>
+                  </label>
                   <input
+                    id="contact-name"
                     onChange={(e) => setUsername(e.target.value)}
                     value={username}
                     className={`${
@@ -127,13 +132,15 @@ const Contact = () => {
                       "outline-designColor"
                     } contactInput`}
                     type="text"
+                    autoComplete="name"
                   />
                 </div>
                 <div className="w-full lgl:w-1/2 flex flex-col gap-4">
-                  <p className="text-sm text-gray-400 uppercase tracking-wide">
+                  <label htmlFor="contact-phone" className="text-sm text-gray-400 uppercase tracking-wide">
                     Phone Number
-                  </p>
+                  </label>
                   <input
+                    id="contact-phone"
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
                     className={`${
@@ -141,14 +148,16 @@ const Contact = () => {
                       "outline-designColor"
                     } contactInput`}
                     type="text"
+                    autoComplete="tel"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
+                <label htmlFor="contact-email" className="text-sm text-gray-400 uppercase tracking-wide">
                   Email
-                </p>
+                </label>
                 <input
+                  id="contact-email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   className={`${
@@ -156,13 +165,15 @@ const Contact = () => {
                     "outline-designColor"
                   } contactInput`}
                   type="email"
+                  autoComplete="email"
                 />
               </div>
               <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
+                <label htmlFor="contact-subject" className="text-sm text-gray-400 uppercase tracking-wide">
                   Subject
-                </p>
+                </label>
                 <input
+                  id="contact-subject"
                   onChange={(e) => setSubject(e.target.value)}
                   value={subject}
                   className={`${
@@ -173,10 +184,11 @@ const Contact = () => {
                 />
               </div>
               <div className="flex flex-col gap-4">
-                <p className="text-sm text-gray-400 uppercase tracking-wide">
+                <label htmlFor="contact-message" className="text-sm text-gray-400 uppercase tracking-wide">
                   Message
-                </p>
+                </label>
                 <textarea
+                  id="contact-message"
                   onChange={(e) => setMessage(e.target.value)}
                   value={message}
                   className={`${
@@ -188,7 +200,7 @@ const Contact = () => {
               </div>
               <div className="w-full">
                 <button
-                  onClick={handleSend}
+                  type="submit"
                   className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent"
                 >
                   Send Message

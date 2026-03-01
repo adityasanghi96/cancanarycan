@@ -43,46 +43,51 @@ const LeftBanner = () => {
             Find me in
           </h2>
           <div className="flex gap-4">
-            <span
+            <a
+              href="https://www.youtube.com/@cancanarycan"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bannerIcon"
-              onClick={() => {
-                window.open("https://www.youtube.com/@cancanarycan", "_blank");
-              }}
+              aria-label="YouTube channel"
             >
               <FaYoutube />
-            </span>
-            <span
+            </a>
+            <a
+              href="https://www.discord.gg/6pk7FHMe9k"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bannerIcon"
-              onClick={() => {
-                window.open("https://www.discord.gg/6pk7FHMe9k", "_blank");
-              }}
+              aria-label="Discord server"
             >
               <FaDiscord />
-            </span>
-            <span
+            </a>
+            <a
+              href="https://www.instagram.com/cancanarycan"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bannerIcon"
-              onClick={() => {
-                window.open("https://www.instagram.com/cancanarycan", "_blank");
-              }}
+              aria-label="Instagram profile"
             >
               <FaInstagram />
-            </span>
-            <span
+            </a>
+            <a
+              href="https://www.facebook.com/notthatcanary"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bannerIcon"
-              onClick={() => {
-                window.open("https://www.facebook.com/notthatcanary", "_blank");
-              }}
+              aria-label="Facebook profile"
             >
               <FaFacebookF />
-            </span>
-            <span
+            </a>
+            <a
+              href="https://www.x.com/cancanarycan"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bannerIcon"
-              onClick={() => {
-                window.open("https://www.x.com/cancanarycan", "_blank");
-              }}
+              aria-label="X (Twitter) profile"
             >
               <FaTwitter />
-            </span>
+            </a>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 import Title from "../layouts/Title";
 import ProjectsCard from "./ProjectsCard";
 
-const array = [
+export const playlists = [
   {
     "url": "https://www.youtube.com/playlist?list=PLasRGNDhAMK4i51liUvnZMxsCee3ZE_gT",
     "src": "https://i.ytimg.com/vi/RZsvXMO4kd4/maxresdefault.jpg",
@@ -95,7 +95,7 @@ const array = [
   },
   {
     "url": "https://www.youtube.com/playlist?list=PLasRGNDhAMK7TqDwevRP7jdsvcV7hM5NC",
-    "src": "https://i.ytimg.com/img/no_thumbnail.jpg",
+    "src": "https://i.ytimg.com/vi/CYSteeNfQfw/maxresdefault.jpg",
     "title": "The first berserker khazan"
   },
   {
@@ -289,7 +289,7 @@ const Projects = () => {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:gap-14">
-        {array.map((item, index) => (
+        {playlists.map((item, index) => (
           <ProjectsCard title={item.title} url={item.url} src={item.src} />
         ))}
       </div>

@@ -20,7 +20,11 @@ const ContactLeft = () => {
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">
-          <a href="mailto:heyitsblackcanary@gmail.com" className="bannerIcon">
+          <a
+            href="mailto:heyitsblackcanary@gmail.com"
+            className="bannerIcon"
+            aria-label="Send email to Chitra"
+          >
             <FaMailBulk />
           </a>
         </div>
