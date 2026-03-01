@@ -11,7 +11,7 @@ const ContactLeft = () => {
         alt="contactImg"
       />
       <div className="flex flex-col gap-4">
-        <h3 className="text-3xl font-bold text-white">Black Canary (Chitra)</h3>
+        <h3 className="text-3xl font-bold text-white">Chitra</h3>
         <p className="text-lg font-normal text-gray-400">Streamer</p>
         <p className="text-base text-gray-400 flex items-center gap-2">
           Email:{" "}
