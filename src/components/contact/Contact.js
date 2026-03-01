@@ -1,6 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Title from "../layouts/Title";
 import ContactLeft from "./ContactLeft";
+
+// Google Form: create a form at forms.google.com with fields (name, phone, email, subject, message).
+// Use the /e/FORM_ID from the form's "Send" link. Get entry IDs via "Get pre-filled link" (⋮) or view form source.
+const GOOGLE_FORM_ACTION =
+  process.env.REACT_APP_GOOGLE_FORM_ACTION ||
+  "https://docs.google.com/forms/d/e/1FAIpQLSe4pkUHoRG7lTMj8eCM7VglhR6IpF8qgyjTlNjM43Mi3E5ehQ/formResponse";
+const ENTRY_IDS = {
+  name: process.env.REACT_APP_GF_ENTRY_NAME || "entry.402142467",
+  phone: process.env.REACT_APP_GF_ENTRY_PHONE || "entry.2125331410",
+  email: process.env.REACT_APP_GF_ENTRY_EMAIL || "entry.1876758487",
+  subject: process.env.REACT_APP_GF_ENTRY_SUBJECT || "entry.2064560768",
+  message: process.env.REACT_APP_GF_ENTRY_MESSAGE || "entry.1498634018",
+};
 
 const Contact = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +23,8 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const googleFormRef = useRef(null);
+  const hiddenIframeRef = useRef(null);
 
   // ========== Email Validation start here ==============
   const emailValidation = () => {
@@ -30,12 +45,23 @@ const Contact = () => {
     } else if (!emailValidation(email)) {
       setErrMsg("Give a valid Email!");
     } else if (subject === "") {
-      setErrMsg("Plese give your Subject!");
+      setErrMsg("Please give your Subject!");
     } else if (message === "") {
       setErrMsg("Message is required!");
     } else {
+      // Submit to Google Form via hidden form + iframe (avoids CORS)
+      if (googleFormRef.current && GOOGLE_FORM_ACTION.includes("formResponse")) {
+        const form = googleFormRef.current;
+        form.action = GOOGLE_FORM_ACTION;
+        form.elements[ENTRY_IDS.name].value = username;
+        form.elements[ENTRY_IDS.phone].value = phoneNumber;
+        form.elements[ENTRY_IDS.email].value = email;
+        form.elements[ENTRY_IDS.subject].value = subject;
+        form.elements[ENTRY_IDS.message].value = message;
+        form.submit();
+      }
       setSuccessMsg(
-        `Thank you dear ${username}, Your Messages has been sent Successfully!`
+        `Thank you dear ${username}, Your message has been sent successfully!`
       );
       setErrMsg("");
       setUsername("");
@@ -57,6 +83,26 @@ const Contact = () => {
         <div className="w-full h-auto flex flex-col lgl:flex-row items-stretch justify-between">
           <ContactLeft />
           <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[#1e2024] to-[#23272b] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne">
+            {/* Hidden form POSTs to Google Forms; response loads in iframe to avoid CORS */}
+            <form
+              ref={googleFormRef}
+              action={GOOGLE_FORM_ACTION}
+              method="POST"
+              target="google-form-iframe"
+              style={{ display: "none" }}
+            >
+              <input name={ENTRY_IDS.name} type="text" />
+              <input name={ENTRY_IDS.phone} type="text" />
+              <input name={ENTRY_IDS.email} type="text" />
+              <input name={ENTRY_IDS.subject} type="text" />
+              <input name={ENTRY_IDS.message} type="text" />
+            </form>
+            <iframe
+              ref={hiddenIframeRef}
+              name="google-form-iframe"
+              title="Form submission"
+              style={{ position: "absolute", width: 0, height: 0, border: 0 }}
+            />
             <form className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5">
               {errMsg && (
                 <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
@@ -120,7 +166,7 @@ const Contact = () => {
                   onChange={(e) => setSubject(e.target.value)}
                   value={subject}
                   className={`${
-                    errMsg === "Plese give your Subject!" &&
+                    errMsg === "Please give your Subject!" &&
                     "outline-designColor"
                   } contactInput`}
                   type="text"
