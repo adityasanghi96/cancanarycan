@@ -47,7 +47,7 @@ const Navbar = () => {
                   <li
                     key={item._id}
                     className="text-base font-normal text-gray-400 tracking-wide cursor-pointer hover:text-designColor duration-300"
-                    // onClick={() => navigate(item.link)}
+                    onClick={() => navigate(item.link)}
                   >
                     <div activeClass="active">{item.title}</div>
                   </li>
