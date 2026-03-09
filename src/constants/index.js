@@ -4,6 +4,10 @@ export const navLinksdata = [
     link: "/",
   },
   {
+    title: "Clips",
+    link: "/clips",
+  },
+  {
     title: "Birthday",
     link: "/birthday",
   },
