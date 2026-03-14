@@ -9,7 +9,7 @@ const defaultImage = `${process.env.PUBLIC_URL || ""}/profilePhoto.png`;
  */
 function SEO({
   title = "Canary | CanCanaryCan",
-  description = "Variety streamer and enthusiastic gamer from India. Love playing FPS multiplayer and story-driven games. Watch entertaining live streams and gaming videos.",
+  description = "Variety youtube streamer and enthusiastic gamer from India. Love playing FPS multiplayer and story-driven games. Watch entertaining live streams and gaming videos.",
   canonical,
   image = defaultImage,
   imageAlt = "Canary | CanCanaryCan",
