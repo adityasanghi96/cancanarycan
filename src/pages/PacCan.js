@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { adi, can, coin, dante, key, robin } from "../assets/index";
+import SEO from "../components/seo/SEO";
 
 const BOARD_SIZE = 10;
 const TILE_SIZE = 50; // Size of each tile in pixels
@@ -156,6 +157,8 @@ function PacCanGame() {
   }, [direction, gameStarted]);
 
   return (
+    <>
+    <SEO title="Canary | CanCanaryCan | PacCan"/>
     <Box
       sx={{
         display: "flex",
@@ -436,6 +439,7 @@ function PacCanGame() {
         </Box>
       )}
     </Box>
+    </>
   );
 }
 

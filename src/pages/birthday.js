@@ -7,6 +7,7 @@ import balloon2 from "../assets/birthday/ballon2.png";
 import balloon3 from "../assets/birthday/ballon3.png";
 import can from "../assets/birthday/can.png";
 import hat from "../assets/birthday/hat.png";
+import SEO from "../components/seo/SEO";
 const balloons = [balloon1, balloon2, balloon3];
 
 gsap.registerPlugin(useGSAP);
@@ -223,6 +224,8 @@ const Birthday = () => {
   ); // Use containerRef as scope
 
   return (
+    <>
+    <SEO title="Canary | CanCanaryCan | Birthday Wish"/>
     <div className="container" ref={containerRef}>
       <div className="one">
         <h1 className="one">
@@ -324,6 +327,7 @@ const Birthday = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

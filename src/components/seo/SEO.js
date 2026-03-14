@@ -8,11 +8,11 @@ const defaultImage = `${process.env.PUBLIC_URL || ""}/profilePhoto.png`;
  * Pass jsonLd as object or array of objects for multiple schemas.
  */
 function SEO({
-  title = "Can Canary Can",
+  title = "Canary | CanCanaryCan",
   description = "Variety streamer and enthusiastic gamer from India. Love playing FPS multiplayer and story-driven games. Watch entertaining live streams and gaming videos.",
   canonical,
   image = defaultImage,
-  imageAlt = "Can Canary Can",
+  imageAlt = "Canary | CanCanaryCan",
   jsonLd,
 }) {
   const baseUrl =

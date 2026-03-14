@@ -39,7 +39,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Can Canary Can",
+    name: "Canary | CanCanaryCan",
     description:
       "Variety streamer and enthusiastic gamer from India. Watch entertaining live streams and gaming videos.",
     ...(baseUrl && {

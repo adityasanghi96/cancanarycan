@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import FooterBottom from "../components/footer/FooterBottom";
 import Title from "../components/layouts/Title";
+import SEO from "../components/seo/SEO";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 const HANDLE = "CanCanaryCan";
@@ -82,6 +83,7 @@ function Clips() {
 
   return (
     <>
+      <SEO title="Canary | CanCanaryCan | Youtube Clips"/>
       <Navbar />
       <section className="w-full py-20 border-b-[1px] border-b-black min-h-screen">
         <div className="max-w-screen-xl mx-auto">
