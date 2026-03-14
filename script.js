@@ -70,11 +70,13 @@ async function listAllPlaylists(channelId) {
       const title = pl?.snippet?.title || "";
       const thumb = bestThumb(pl?.snippet?.thumbnails);
 
-      out.push({
-        url: `https://www.youtube.com/playlist?list=${playlistId}`,
-        src: thumb,
-        title: title,
-      });
+      if(thumb && !thumb.includes('no_thumbnail')){
+        out.push({
+          url: `https://www.youtube.com/playlist?list=${playlistId}`,
+          src: thumb,
+          title: title,
+        });
+      }
     }
 
     pageToken = data.nextPageToken;

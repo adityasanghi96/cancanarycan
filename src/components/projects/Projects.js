@@ -4,8 +4,13 @@ import ProjectsCard from "./ProjectsCard";
 
 export const playlists = [
   {
+    "url": "https://www.youtube.com/playlist?list=PLasRGNDhAMK7-oEy5aKGsBnk33-eHS9Pi",
+    "src": "https://i.ytimg.com/vi/44uTStflIJ4/maxresdefault_live.jpg",
+    "title": "Uncharted 4"
+  },
+  {
     "url": "https://www.youtube.com/playlist?list=PLasRGNDhAMK4i51liUvnZMxsCee3ZE_gT",
-    "src": "https://i.ytimg.com/vi/RZsvXMO4kd4/maxresdefault.jpg",
+    "src": "https://i.ytimg.com/vi/Gj_HOyn3_jk/maxresdefault.jpg",
     "title": "Resident Evil 9 Requiem"
   },
   {
@@ -92,11 +97,6 @@ export const playlists = [
     "url": "https://www.youtube.com/playlist?list=PLasRGNDhAMK5GsMTNIpdEutdNviIou7z3",
     "src": "https://i.ytimg.com/vi/LSIRkOFLwrg/maxresdefault.jpg",
     "title": "The Last of Us Part II"
-  },
-  {
-    "url": "https://www.youtube.com/playlist?list=PLasRGNDhAMK7TqDwevRP7jdsvcV7hM5NC",
-    "src": "https://i.ytimg.com/vi/CYSteeNfQfw/maxresdefault.jpg",
-    "title": "The first berserker khazan"
   },
   {
     "url": "https://www.youtube.com/playlist?list=PLasRGNDhAMK6dTlAYpkk5UnDg-vsgi0sD",
